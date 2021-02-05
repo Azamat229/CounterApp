@@ -3,6 +3,7 @@ package com.example.counterapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -14,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
     TextView txv;
 
 
-
+    @SuppressLint("DefaultLocale")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,10 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
         btn = findViewById(R.id.button);
         txv = findViewById(R.id.textView);
-//        @Override
-//        public void onSaveInstanceState(Bundle savedInstanceState) {
-//
-//        }
+
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,9 +35,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        if(savedInstanceState != null){
+        if (savedInstanceState != null) {
             counter = savedInstanceState.getInt("count");
-            txv.setText(String.valueOf(counter  ));
+            txv.setText(String.valueOf(String.format("%04d", counter)));
         }
 
 
